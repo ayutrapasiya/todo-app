@@ -14,7 +14,5 @@ db.once('open',(err)=>{
         console.log('MongoDB connection error:',err);
         return false;
     }
-
-    
     console.log("mongodb connection is ready");
 })
