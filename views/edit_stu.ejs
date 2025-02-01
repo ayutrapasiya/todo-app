@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>student Information</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+
+<body>
+
+
+    <div class="container mt-3">
+        <h1 class="text-center mb-4 fs-3">Update Students Information</h1>
+
+        <form method="post" action="/editData">
+            <input type="hidden" name="stId" value="<%= singleData.id %>">
+            <table class="table table-bordered table-striped mt-0  w-50 text-center" align="center">
+                <tbody>
+                    <tr>
+                        <td class="fw-bold">Enter your Name:</td>
+                        <td><input type="text" name="name" value="<%= singleData.name %>"></td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Enter your Last Name:</td>
+                        <td><input type="text" name="lname" value="<%= singleData.lname %>"></td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Enter your Email:</td>
+                        <td><input type="email" name="email" value="<%= singleData.email %>"></td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Gender:</td>
+                        <td class=" d-flex" style="font-size: 15px;">
+                            <input type="radio" class="w-auto me-2" name="gender" value="Male"
+                            <% if (singleData.gender == "Male") { %> <%= 'checked' %> <% } %> /> Male
+                            <input type="radio" class="w-auto me-2 ms-5" name="gender" value="Female"
+                            <% if (singleData.gender == "Female") { %> <%= 'checked' %> <% } %> /> Female
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">Hobby:</td>
+                        <td>
+                            <input type="checkbox" class="w-auto ms-3 text-center" name="hobby" value="Reading" 
+                            <% if (singleData.hobby.includes("Reading")) { %> <%= 'checked' %> <% } %> />Reading 
+                            <input type="checkbox" class="w-auto ms-3 text-center" name="hobby" value="Music"
+                            <% if (singleData.hobby.includes("Music")) { %> <%= 'checked' %> <% } %> />
+                            Music<br />
+                            <input type="checkbox" class="w-auto ms-3 text-center" name="hobby" value="Cycling"
+                            <% if (singleData.hobby.includes("Cycling")) { %> <%= 'checked' %> <% } %> />Cycling
+                            <input type="checkbox" class="w-auto ms-3 text-center" name="hobby" value="Traveling"
+                            <% if (singleData.hobby.includes("Traveling")) { %> <%= 'checked' %> <% } %> />Traveling
+                            <input type="checkbox" class="w-auto ms-3 text-center" name="hobby" value="Dancing"
+                            <% if (singleData.hobby.includes("Dancing")) { %> <%= 'checked' %> <% } %> /> Dancing
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">City:</td>
+                        <% var citys=["Surat", "Vadodara" , "Rajkot" ] %>
+                            <td>
+                                <select name="city">
+                                    <option value="">--- Select City ---</option>
+                                    <% citys.map((v, i)=> { %>
+                                        <option value="<%= v %>"
+                                            <% if (singleData.city == v) { %> <%= 'selected' %> <% } %>>
+                                            <%= v %>
+                                        </option>
+                                        <% }) %>
+                                </select>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">About:</td>
+                        <td><textarea name="about" rows="3"><%= singleData.about %></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            <button type="submit" class="btn text-white"
+                                style="background-color:  #1F509A;">Conform</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

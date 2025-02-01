@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/extra/fonts/remixicon.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand " style="background-color: #e3f2fd;">
+            <div class="container">
+                <div class="flex-grow-1">
+                    <a class="navbar-brand" href="#">
+                        <img src="/images/logo.png" alt="" width="50" height="50">
+                        <span class="fw-semibold" style="color: #0A5EB0;">Student's Information</span>
+                    </a>
+                </div>
+                <div>
+                    <div class="navbar-nav me-5">
+                        <a class="nav-link" style="color: #0A5EB0;" href="#">Home</a>
+                        <a class="nav-link" style="color: #0A5EB0;" href="#">View</a>
+                        <a class="nav-link" style="color: #0A5EB0;" href="#">Project</a>
+                    </div>
+                </div>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn text-white" style="background-color: #1F509A;font-size: 18px; padding:7px 14px ;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    +
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h1 class="modal-title fs-4 " id="exampleModalLabel">Student Information</h1>
+                            </div>
+                            <div class="modal-body">
+                                <form method="post" action="/insertData">
+                                    <table class="table table-bordered table-striped mt-0 w-100 text-center"
+                                        align="center">
+                                        <tbody>
+                                            <tr>
+                                                <td class="fw-bold">Enter your Name:</td>
+                                                <td><input type="text" name="name"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-bold">Enter your Last Name:</td>
+                                                <td><input type="text" name="lname"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-bold">Enter your Email:</td>
+                                                <td><input type="email" name="email"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-bold">Gender:</td>
+                                                <td class=" d-flex" style="font-size: 15px;" >
+                                                    <input type="radio" class="w-auto me-2" name="gender" value="Male"> Male
+                                                    <input type="radio"class="w-auto me-2 ms-5"  name="gender" value="Female"> Female
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-bold">Hobby:</td>
+                                                <td >
+                                                    <input type="checkbox"class="w-auto ms-3 text-center" name="hobby" value="Reading"> Reading
+                                                    <input type="checkbox"class="w-auto ms-3 text-center" name="hobby" value="Music"> Music<br />
+                                                    <input type="checkbox"class="w-auto ms-3 text-center" name="hobby" value="Cycling"> Cycling
+                                                    <input type="checkbox" class="w-auto ms-3 text-center"name="hobby" value="Traveling"> Traveling
+                                                    <input type="checkbox" class="w-auto ms-3 text-center"name="hobby" value="Dancing"> Dancing
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-bold">City:</td>
+                                                <% var citys=["Surat", "Vadodara" , "Rajkot" ] %>
+                                                    <td>
+                                                        <select name="city">
+                                                            <option value="">--- Select City ---</option>
+                                                            <% citys.map((v, i)=> { %>
+                                                                <option value="<%= v %>">
+                                                                    <%= v %>
+                                                                </option>
+                                                                <% }) %>
+                                                        </select>
+                                                    </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="fw-bold">About:</td>
+                                                <td><textarea name="about" rows="3"></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" class="text-center">
+                                                    <button type="submit" class="btn text-white" style="background-color:  #1F509A;">Submit</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </nav>
+    </header>
+
+    <main>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>LastName</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Hobby</th>
+                <th>City</th>
+                <th>About</th>
+                <th colspan="2" class="text-center">Actions</th>
+            </tr>
+            <% stuData.map((v, i)=> { %>
+                <tr>
+                    <td>
+                        <%= v.name %>
+                    </td>
+                    <td>
+                        <%= v.lname %>
+                    </td>
+                    <td>
+                        <%= v.email %>
+                    </td>
+                    <td>
+                        <%= v.gender %>
+                    </td>
+                    <td>
+                        <%= v.hobby %>
+                    </td>
+                    <td>
+                        <%= v.city %>
+                    </td>
+                    <td>
+                        <%= v.about %>
+                    </td>
+                    <td>
+                        <a href="/updateData/<%= v._id %>" class="btn btn-success btn-sm">
+                            <i class="ri-edit-2-line"></i>Update</a>
+                    </td>
+                    <td>
+                        <a href="/deleteData/?stuId=<%= v._id %>" class="btn btn-danger btn-sm"><i
+                                class="ri-delete-bin-6-line"></i>Delete</a>
+                    </td>
+                </tr>
+                <% }); %>
+
+        </table>
+    </main>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

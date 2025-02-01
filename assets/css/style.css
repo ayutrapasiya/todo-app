@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #f0f8ff, #e3f2fd);
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    font-size: 1rem;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Modal */
+
+.modal-content {
+    border-radius: 14px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+    background-color: #1F509A;
+    color: white;
+    justify-content: center;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+
+
+.modal-body input:focus,
+.modal-body select:focus,
+.modal-body textarea:focus {
+    outline: none;
+    border: 2px solid #1F509A;
+}
+
+
+
+/* Table */
+.table {
+    background-color: white;
+    border-collapse: collapse;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 20px auto;
+    width: 90%;
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.table th {
+    background-color: #1F509A;
+    color: white;
+}
+
+.table td a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 6px 10px;
+    border-radius: 5px;
+
+}
+
+.table td a i {
+    margin-right: 5px;
+}
+
+
+
+
+table input,
+table select,
+table textarea {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+}
+
+table td {
+    vertical-align: middle;
+}
